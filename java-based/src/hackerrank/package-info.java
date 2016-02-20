@@ -1,8 +1,0 @@
-/**
- * 
- */
-/**
- * @author larcuser
- *
- */
-package hackerrank;
