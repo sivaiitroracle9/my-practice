@@ -12,6 +12,10 @@ public class SuffixArray {
 		int[] sa = SA_n_logn_logn(text);
 		for (int i = 0; i < sa.length; i++)
 			System.out.print(sa[i] + " ");
+		System.out.println();
+		int[] lcp = LCP(sa, text);
+		for (int i = 0; i < lcp.length; i++)
+			System.out.print(lcp[i] + " ");
 	}
 
 	static int[] SA_n_logn_logn(String text) {
@@ -68,6 +72,27 @@ public class SuffixArray {
 		return null;
 	}
 
+	static int[] LCP(int[] SA, String text) {
+		int N = text.length();
+		int[] invSA = new int[N];
+		for (int i = 0; i < N; i++)
+			invSA[SA[i]] = i;
+		char[] t = text.toCharArray();
+		int[] LCP = new int[N];
+		int L = 0;
+		for (int i = 0; i < N; i++) {
+			int rank = invSA[i];
+			if (rank > 0) {
+				int j = SA[rank - 1];
+				while (i + L < N && j + L < N && t[i + L] == t[j + L])
+					L++;
+			}
+			LCP[rank] = L;
+			if (L > 0)
+				L--;
+		}
+		return LCP;
+	}
 }
 
 class Suffix implements Comparable<Suffix> {
