@@ -1,8 +1,6 @@
 package interview.worksapp;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class LongestSubStrAppearMoreThanOnce {
@@ -14,41 +12,25 @@ public class LongestSubStrAppearMoreThanOnce {
 		System.out.println(LSO(word));
 	}
 
-	static String LSO(String word) {
-		String lto = "";
-		int N = word.length();
+	static String LSO (String word) {
+		String[] SA = new String[word.length()];
+		for(int i=0; i<word.length(); i++) SA[i] = word.substring(i);
+		Arrays.sort(SA);
 
-		List<String> sufixArray = new ArrayList<String>(N);
-		for (int i = 0; i < N; i++) {
-			sufixArray.add(word.substring(N - 1 - i));
-		}
-
-		Collections.sort(sufixArray);
-		int maxL = 0;
-		for (int i = 0; i <= N - 2; i++) {
-			String sbi = sufixArray.get(i);
-			String sbi1 = sufixArray.get(i + 1);
-			if (sbi.length() > maxL || sbi1.length() > maxL) {
-				int k = 0;
-				int numL = 0;
-				while (sbi.length() > k && sbi1.length() > k) {
-					if (sbi.charAt(k) == sbi1.charAt(k)) {
-						k++;
-						numL++;
-					} else {
-						break;
+		int max = 0;
+		int maxI = 0;
+		for(int i=1; i<SA.length; i++) {
+			int j=0;
+			while (true) {
+				if(j<SA[i].length() && j<SA[i-1].length() && SA[i].charAt(j) == SA[i-1].charAt(j)) {
+					j++;
+					if(max < j){
+						max = j;
+						maxI = i;
 					}
-				}
-
-				if (numL > maxL) {
-					maxL = numL;
-					lto = sbi.substring(0, numL);
-				}
-
+				} else break;
 			}
 		}
-
-		return lto;
+		return SA[maxI].substring(0, max);
 	}
-
-}
+ }
