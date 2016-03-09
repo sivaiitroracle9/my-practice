@@ -44,7 +44,7 @@ public class MaximumInWindow {
 			while (de.peekFirst() < (i - k + 1))
 				de.removeFirst();
 
-			while (!de.isEmpty() && de.peekLast() < nums[i])
+			while (!de.isEmpty() && nums[de.peekLast()] < nums[i])
 				de.removeLast();
 			de.addLast(i);
 			maxArray[i - k + 1] = nums[de.peekFirst()];
