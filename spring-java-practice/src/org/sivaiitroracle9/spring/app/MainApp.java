@@ -9,11 +9,8 @@ public class MainApp {
 		ApplicationContext context = new ClassPathXmlApplicationContext(
 				"Beans.xml");
 		HelloWorld helloWorld = (HelloWorld) context.getBean("helloWorld");
-
 		helloWorld.getMessage();
-
 		helloWorld.setMessage("Hey India!!");
-
 		helloWorld.getMessage();
 	}
 }
