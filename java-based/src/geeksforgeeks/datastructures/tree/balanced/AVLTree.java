@@ -3,14 +3,99 @@ package geeksforgeeks.datastructures.tree.balanced;
 public class AVLTree {
 
 	public static void main(String[] args) {
-		int[] arr = { 10, 20, 30, 40, 50, 25 };
+		int[] arr = { 9, 5, 10, 0, 6, 11, -1, 1, 2 };
 
 		AVLTree avlTree = new AVLTree();
 		Node root = null;
-		for (int in : arr) {
+		for (int in : arr)
 			root = avlTree.insert(root, in);
-			avlTree.printPreorder(root);
+		avlTree.printPreorder(root);
+		root = avlTree.delete(root, 10);
+		avlTree.preOrder(root);
+	}
+
+	public Node delete(Node node, int val) {
+
+		if (node == null) {
+			return node;
 		}
+
+		if (node.data > val) {
+			node.left = delete(node.left, val);
+		} else if (node.data < val) {
+			node.right = delete(node.right, val);
+		} else {
+			if (node.left == null || node.right == null) {
+				Node temp = null;
+				if (node.left == null) {
+					temp = node.right;
+				} else {
+					temp = node.left;
+				}
+
+				// No Child.
+				if (temp == null) {
+					node = null;
+				} else {
+					node = temp;
+				}
+
+			} else {
+				Node temp = findNextMin(node);
+				node.data = temp.data;
+				node.right = delete(node.right, temp.data);
+			}
+		}
+
+		if (node == null)
+			return node;
+
+		node.height = Math.max(getHeight(node.left), getHeight(node.right)) + 1;
+		int balance = getBalance(node);
+
+		// Left - Left
+		if (balance > 1 && getBalance(node.left) >= 0) {
+			return rotateRight(node);
+		}
+
+		// Left - Right
+		if (balance > 1 && getBalance(node.left) < 0) {
+			node.left = rotateLeft(node.left);
+			return rotateRight(node);
+		}
+
+		// Right - Right
+		if (balance < -1 && getBalance(node.right) <= 0) {
+			return rotateLeft(node);
+		}
+
+		// Right - Left
+		if (balance < -1 && getBalance(node.right) > 0) {
+			node.right = rotateRight(node.right);
+			return rotateLeft(node);
+		}
+
+		return node;
+	}
+
+	private int getBalance(Node node) {
+		if (node == null)
+			return 0;
+
+		return getHeight(node.left) - getHeight(node.right);
+	}
+
+	private int getHeight(Node node) {
+		if (node == null)
+			return 0;
+		return node.height;
+	}
+
+	private Node findNextMin(Node node) {
+		if (node.left != null) {
+			return findNextMin(node.left);
+		}
+		return node;
 	}
 
 	public Node insert(Node node, int val) {
@@ -25,8 +110,8 @@ public class AVLTree {
 			node.right = insert(node.right, val);
 		}
 
-		int lH = (node.left != null) ? node.left.height: 0;
-		int rH = (node.right != null) ? node.right.height: 0;
+		int lH = (node.left != null) ? node.left.height : 0;
+		int rH = (node.right != null) ? node.right.height : 0;
 		node.height = Math.max(lH, rH) + 1;
 
 		int balance = lH - rH;
@@ -73,11 +158,11 @@ public class AVLTree {
 		Node left = node.left;
 		Node left_right = node.left.right;
 		node.left = left_right;
-		node.height = Math.max(node.left!=null ? node.left.height : 0, 
-				node.right!=null ? node.right.height : 0) + 1;
+		node.height = Math.max(node.left != null ? node.left.height : 0,
+				node.right != null ? node.right.height : 0) + 1;
 		left.right = node;
-		left.height = Math.max(left.left!=null ? left.left.height : 0, 
-				left.right!=null ? left.right.height : 0) + 1;
+		left.height = Math.max(left.left != null ? left.left.height : 0,
+				left.right != null ? left.right.height : 0) + 1;
 		return left;
 	}
 
@@ -86,11 +171,11 @@ public class AVLTree {
 		Node right_left = node.right.left;
 		node.right = right_left;
 		right.left = node;
-		
-		node.height = Math.max(node.left!=null ? node.left.height : 0, 
-				node.right!=null ? node.right.height : 0) + 1;
-		right.height = Math.max(right.left!=null ? right.left.height : 0, 
-				right.right!=null ? right.right.height : 0) + 1;
+
+		node.height = Math.max(node.left != null ? node.left.height : 0,
+				node.right != null ? node.right.height : 0) + 1;
+		right.height = Math.max(right.left != null ? right.left.height : 0,
+				right.right != null ? right.right.height : 0) + 1;
 		return right;
 	}
 
