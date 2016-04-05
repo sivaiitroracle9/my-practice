@@ -1,11 +1,12 @@
 package geeksforgeeks.datastructures.tree.balanced;
 
-public class AVLTree {
+
+public class AVLTree_DupKeys {
 
 	public static void main(String[] args) {
 		int[] arr = { 9, 5, 10, 0, 6, 11, -1, 1, 2 };
 
-		AVLTree avlTree = new AVLTree();
+		AVLTree_DupKeys avlTree = new AVLTree_DupKeys();
 		Node root = null;
 		for (int in : arr)
 			root = avlTree.insert(root, in);
@@ -25,6 +26,12 @@ public class AVLTree {
 		} else if (node.data < val) {
 			node.right = delete(node.right, val);
 		} else {
+			
+			if(node.count > 1) {
+				node.count = node.count - 1;
+				return node;
+			}
+			
 			if (node.left == null || node.right == null) {
 				Node temp = null;
 				if (node.left == null) {
@@ -108,6 +115,9 @@ public class AVLTree {
 			node.left = insert(node.left, val);
 		} else if(node.data < val) {
 			node.right = insert(node.right, val);
+		} else {
+			node.count += 1;
+			return node;
 		}
 
 		int lH = (node.left != null) ? node.left.height : 0;
@@ -184,7 +194,8 @@ public class AVLTree {
 		private Node right;
 		private int data;
 		private int height = 1;
-
+		private int count = 1;
+		
 		public Node(int val) {
 			this.data = val;
 		}
