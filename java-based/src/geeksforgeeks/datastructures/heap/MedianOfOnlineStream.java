@@ -3,7 +3,7 @@ package geeksforgeeks.datastructures.heap;
 public class MedianOfOnlineStream {
 
 	int MAX_HEAP_SIZE = 128;
-	int median = -1;
+	float median = -1;
 
 	public static void main(String[] args) {
 
@@ -18,7 +18,7 @@ public class MedianOfOnlineStream {
 		System.out.println();
 	}
 
-	private int findMedian(int in, Heap minHeap, Heap maxHeap) {
+	private float findMedian(int in, Heap minHeap, Heap maxHeap) {
 		if (median < in) {
 			minHeap.add(in);
 		} else {
@@ -28,17 +28,17 @@ public class MedianOfOnlineStream {
 		if (maxHeap.size() - minHeap.size() == 2) {
 			int m = maxHeap.extractTop();
 			minHeap.add(m);
-			median = (maxHeap.peek() + minHeap.peek()) / 2;
+			median = (maxHeap.peek() + minHeap.peek()) / 2f;
 		} else if (maxHeap.size() - minHeap.size() == 1) {
 			median = maxHeap.peek();
 		} else if (minHeap.size() - maxHeap.size() == 2) {
 			int m = minHeap.extractTop();
 			maxHeap.add(m);
-			median = (maxHeap.peek() + minHeap.peek()) / 2;
+			median = (maxHeap.peek() + minHeap.peek()) / 2f;
 		} else if (minHeap.size() - maxHeap.size() == 1) {
 			median = minHeap.peek();
 		} else {
-			median = (maxHeap.peek() + minHeap.peek()) / 2;
+			median = (maxHeap.peek() + minHeap.peek()) / 2f;
 		}
 		return median;
 	}
@@ -55,7 +55,7 @@ public class MedianOfOnlineStream {
 		public void add(int x) {
 			size++;
 			heap[size] = x;
-			heapifyUP(size / 2);
+			heapifyUP(size);
 		}
 
 		public int peek() {
@@ -90,81 +90,83 @@ public class MedianOfOnlineStream {
 
 			if (type == 0) {
 				int min = Integer.MAX_VALUE;
-				if (size >= left)
+				if (size >= left) {
 					min = Math.min(heap[left], min);
-				else
-					return;
-				if (size >= right)
-					min = Math.min(min, heap[right]);
-				if (heap[node] > min) {
-					int temp = heap[node];
-					heap[node] = min;
-					if (min == heap[left]) {
-						heap[left] = temp;
-						heapifyDN(left);
-					} else {
-						heap[right] = temp;
-						heapifyDN(right);
+					if (size >= right)
+						min = Math.min(min, heap[right]);
+					if (heap[node] > min) {
+						int temp = heap[node];
+						heap[node] = min;
+						if (min == heap[left]) {
+							heap[left] = temp;
+							heapifyDN(left);
+						} else {
+							heap[right] = temp;
+							heapifyDN(right);
+						}
 					}
 				}
 			} else {
 				int max = Integer.MIN_VALUE;
-				if (size >= left)
+				if (size >= left) {
 					max = Math.min(heap[left], max);
-				else
-					return;
-				if (size >= right)
-					max = Math.max(max, heap[right]);
-				if (heap[node] < max) {
-					int temp = heap[node];
-					heap[node] = max;
-					if (max == heap[left]) {
-						heap[left] = temp;
-						heapifyDN(left);
-					} else {
-						heap[right] = temp;
-						heapifyDN(right);
+					if (size >= right)
+						max = Math.max(max, heap[right]);
+					if (heap[node] < max) {
+						int temp = heap[node];
+						heap[node] = max;
+						if (max == heap[left]) {
+							heap[left] = temp;
+							heapifyDN(left);
+						} else {
+							heap[right] = temp;
+							heapifyDN(right);
+						}
 					}
 				}
 			}
 		}
 
 		private void heapifyUP(int node) {
-			if (node == 0)
-				return;
 			int left = 2 * node + 1;
 			int right = 2 * node + 2;
-			int parent = node / 2;
 			if (type == 0) {
 				int min = Integer.MAX_VALUE;
-				if (size >= right)
-					min = Math.min(min, heap[right]);
-				min = Math.min(heap[left], min);
-				if (heap[node] > min) {
-					int temp = heap[node];
-					heap[node] = min;
-					if (min == heap[left]) {
-						heap[left] = temp;
-					} else {
-						heap[right] = temp;
+				if (size >= left) {
+					min = Math.min(heap[left], min);
+					if (size >= right)
+						min = Math.min(min, heap[right]);
+					if (heap[node] > min) {
+						int temp = heap[node];
+						heap[node] = min;
+						if (min == heap[left]) {
+							heap[left] = temp;
+						} else {
+							heap[right] = temp;
+						}
 					}
 				}
-				heapifyUP(node / 2);
+
+				if (node != 0)
+					heapifyUP(node / 2);
 			} else {
 				int max = Integer.MIN_VALUE;
-				if (size >= right)
-					max = Math.max(max, heap[right]);
-				max = Math.max(heap[left], max);
-				if (heap[node] < max) {
-					int temp = heap[node];
-					heap[node] = max;
-					if (max == heap[left]) {
-						heap[left] = temp;
-					} else {
-						heap[right] = temp;
+				if (size >= left) {
+					max = Math.max(heap[left], max);
+					if (size >= right)
+						max = Math.max(max, heap[right]);
+					if (heap[node] < max) {
+						int temp = heap[node];
+						heap[node] = max;
+						if (max == heap[left]) {
+							heap[left] = temp;
+						} else {
+							heap[right] = temp;
+						}
 					}
 				}
-				heapifyUP(node / 2);
+				if (node != 0)
+					heapifyUP(node / 2);
 			}
 		}
 
