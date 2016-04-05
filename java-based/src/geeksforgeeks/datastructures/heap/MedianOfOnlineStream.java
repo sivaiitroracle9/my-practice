@@ -4,27 +4,43 @@ public class MedianOfOnlineStream {
 
 	int MAX_HEAP_SIZE = 128;
 	int median = -1;
-	
+
 	public static void main(String[] args) {
 
 		MedianOfOnlineStream md = new MedianOfOnlineStream();
 
 		int[] arr = { 5, 15, 1, 3, 2, 8, 7, 9, 10, 6, 11, 4 };
-		Heap minHeap = new Heap(0);
-		Heap maxHeap = new Heap(1);
+		Heap minHeap = md.new Heap(0);
+		Heap maxHeap = md.new Heap(1);
 		for (int in : arr) {
-			System.out.print(findMedian(in, minHeap, maxHeap) + " ");
+			System.out.print(md.findMedian(in, minHeap, maxHeap) + " ");
 		}
 		System.out.println();
 	}
-	
+
 	private int findMedian(int in, Heap minHeap, Heap maxHeap) {
-		if(median == -1) {
-			median = in;
-			return median;
+		if (median < in) {
+			minHeap.add(in);
+		} else {
+			maxHeap.add(in);
 		}
-		
-		if(in>)
+
+		if (maxHeap.size() - minHeap.size() == 2) {
+			int m = maxHeap.extractTop();
+			minHeap.add(m);
+			median = (maxHeap.peek() + minHeap.peek()) / 2;
+		} else if (maxHeap.size() - minHeap.size() == 1) {
+			median = maxHeap.peek();
+		} else if (minHeap.size() - maxHeap.size() == 2) {
+			int m = minHeap.extractTop();
+			maxHeap.add(m);
+			median = (maxHeap.peek() + minHeap.peek()) / 2;
+		} else if (minHeap.size() - maxHeap.size() == 1) {
+			median = minHeap.peek();
+		} else {
+			median = (maxHeap.peek() + minHeap.peek()) / 2;
+		}
+		return median;
 	}
 
 	class Heap {
@@ -41,16 +57,17 @@ public class MedianOfOnlineStream {
 			heap[size] = x;
 			heapifyUP(size / 2);
 		}
-		
+
 		public int peek() {
-			if(size < 0) return -1;
+			if (size < 0)
+				return -1;
 			return heap[0];
 		}
-		
+
 		public int size() {
 			return size + 1;
 		}
-		
+
 		public int extractTop() {
 
 			if (size > -1) {
