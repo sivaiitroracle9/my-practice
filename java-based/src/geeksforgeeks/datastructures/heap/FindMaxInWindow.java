@@ -21,22 +21,34 @@ public class FindMaxInWindow {
 		/**
 		 * O(N) Algorithm. Dequeue
 		 */
+		findMax_On(arr, k);
 	}
 
 	public static void findMax_On(int[] arr, int k) {
-		
-		Deque<Integer> de = new LinkedList<Integer>();
-		
-		for(int i=0; i<=k-2; k++) {
 
-			while(!de.isEmpty() && de.peekLast())
-			
+		Deque<Integer> de = new LinkedList<Integer>();
+
+		for (int i = 0; i <= k - 2; i++) {
+
+			while (!de.isEmpty() && arr[de.peekLast()] < arr[i])
+				de.removeLast();
+
 			de.addLast(i);
 		}
-		
+
+		for (int i = k - 1; i < arr.length; i++) {
+
+			while (!de.isEmpty() && de.peekFirst() < i + 1 - k)
+				de.removeFirst();
+			while (!de.isEmpty() && arr[de.peekLast()] < arr[i])
+				de.removeLast();
+			de.addLast(i);
+
+			System.out.print(arr[de.peekFirst()] + " ");
+		}
+
 	}
-	
-	
+
 	public static void findMax(int[] arr, int k) {
 		AVLTree bst = new AVLTree();
 		for (int i = 0; i <= k - 2; i++) {
