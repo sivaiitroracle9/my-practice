@@ -1,5 +1,12 @@
 package algorithms.geometry;
 
+/**
+ * 
+ * Maximum Histogram Area.
+ * 
+ * @author Siva Kumar Edupuganti.
+ * @email sivaiitroracle9@gmail.com
+ */
 import java.util.Deque;
 import java.util.LinkedList;
 
