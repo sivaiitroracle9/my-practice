@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * 
+ * O(n2)
  * https://leetcode.com/problems/word-search/
  * 
  * @author Siva Kumar Edupuganti.
@@ -57,11 +57,11 @@ public class WordSearch {
 	private static boolean word_search_helper(char[][] board, char[] cword,
 			int r, int c, int i, boolean[][] visited) {
 
-		if (i == cword.length)
-			return true;
-
 		if (board[r][c] != cword[i])
 			return false;
+		
+		if (i == cword.length - 1)
+			return true;
 
 		visited[r][c] = true;
 		if (r + 1 < board.length && !visited[r + 1][c]) {
