@@ -28,6 +28,8 @@ public class SlidingWindowMaximum {
 			System.out.print(i + " ");
 		System.out.println();
 	}
+	
+	//TODO SEGMENT TREE - Range Queries.
 
 	public int[] max_sliding_window_dequeue(int[] nums, int k) {
 		int[] max_slide = new int[nums.length - k + 1];
