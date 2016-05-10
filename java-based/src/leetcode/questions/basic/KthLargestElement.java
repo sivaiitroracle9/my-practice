@@ -23,7 +23,6 @@ public class KthLargestElement {
 	class MaxHeap {
 
 		private int size = 0;
-		private int index = -1;
 		private int[] heap = null;
 
 		public MaxHeap(int size) {
@@ -33,11 +32,6 @@ public class KthLargestElement {
 		
 		public void insert (int num) {
 			
-			if(size > index) {
-				
-			}
-			
-			heap[]
 		}
 		
 	}
