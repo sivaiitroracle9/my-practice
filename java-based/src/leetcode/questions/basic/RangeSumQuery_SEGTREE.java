@@ -31,7 +31,11 @@ public class RangeSumQuery_SEGTREE {
 
 	public RangeSumQuery_SEGTREE(int[] nums) {
 		// SEG-TREE can also be of length 2 pow h+1 -1;
-		SEGTREE = new int[2 * nums.length - 1];
+		// SEGTREE = new int[2 * nums.length - 1];
+
+		int height = (int) Math.ceil(Math.log(nums.length) / Math.log(2));
+		int seg_length = (int) (2 * Math.pow(2, height) - 1);
+		SEGTREE = new int[seg_length];
 
 		numarr = new int[nums.length];
 		for (int i = 0; i < nums.length; i++)
@@ -45,10 +49,8 @@ public class RangeSumQuery_SEGTREE {
 			SEGTREE[i] = arr[left];
 		} else {
 			int mid = (left + right) / 2;
-			int lsum = 2 * i + 1 < SEGTREE.length ? createSTREE(left, mid, arr,
-					2 * i + 1) : 0;
-			int rsum = 2 * i + 2 < SEGTREE.length ? createSTREE(mid + 1, right,
-					arr, 2 * i + 2) : 0;
+			int lsum = createSTREE(left, mid, arr, 2 * i + 1);
+			int rsum = createSTREE(mid + 1, right, arr, 2 * i + 2);
 			SEGTREE[i] = lsum + rsum;
 		}
 
@@ -71,10 +73,8 @@ public class RangeSumQuery_SEGTREE {
 			} else {
 				updateSTREE(2 * current + 2, pos, val, mid + 1, right);
 			}
-			int lsum = 2 * current + 1 < SEGTREE.length ? SEGTREE[2 * current + 1]
-					: 0;
-			int rsum = 2 * current + 2 < SEGTREE.length ? SEGTREE[2 * current + 2]
-					: 0;
+			int lsum = SEGTREE[2 * current + 1];
+			int rsum = SEGTREE[2 * current + 2];
 			SEGTREE[current] = lsum + rsum;
 		}
 
