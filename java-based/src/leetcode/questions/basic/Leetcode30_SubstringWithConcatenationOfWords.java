@@ -9,8 +9,8 @@ public class Leetcode30_SubstringWithConcatenationOfWords {
 
 	public static void main(String[] args) {
 		Leetcode30_SubstringWithConcatenationOfWords lc = new Leetcode30_SubstringWithConcatenationOfWords();
-		String s = "barfoofoobarthefoobarman";
-		String[] words = { "bar", "foo", "the" };
+		String s = "aaaaaaaa";
+		String[] words = { "aa", "aa", "aa" };
 		for (int out : lc.findSubstring(s, words)) {
 			System.out.print(out + ", ");
 		}
@@ -22,6 +22,8 @@ public class Leetcode30_SubstringWithConcatenationOfWords {
 
 		Map<String, Integer> word_count = new HashMap<String, Integer>();
 		int word_length = words[0].length();
+		if (s.length() < (words.length * word_length))
+			return foundIndex;
 		for (String word : words) {
 			if (!word_count.containsKey(word)) {
 				word_count.put(word, 1);
@@ -31,9 +33,9 @@ public class Leetcode30_SubstringWithConcatenationOfWords {
 		}
 
 		Map<String, Integer> currMap = new HashMap<String, Integer>();
-		int count_words = 0;
 		String kstring = null, temp = null;
 		for (int i = 0; i < word_length; i++) {
+			int count_words = 0;
 			for (int left = i, right = i; right + word_length <= s.length(); right += word_length) {
 				kstring = s.substring(right, right + word_length);
 				if (word_count.containsKey(kstring)) {
@@ -64,6 +66,7 @@ public class Leetcode30_SubstringWithConcatenationOfWords {
 					left = right + word_length;
 				}
 			}
+			currMap.clear();
 		}
 		return foundIndex;
 	}
