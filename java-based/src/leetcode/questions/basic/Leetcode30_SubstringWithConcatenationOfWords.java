@@ -5,10 +5,15 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class SubstringWithConcatenationOfWords_Leetcode30 {
+public class Leetcode30_SubstringWithConcatenationOfWords {
 
 	public static void main(String[] args) {
-
+		Leetcode30_SubstringWithConcatenationOfWords lc = new Leetcode30_SubstringWithConcatenationOfWords();
+		String s = "barfoofoobarthefoobarman";
+		String[] words = { "bar", "foo", "the" };
+		for (int out : lc.findSubstring(s, words)) {
+			System.out.print(out + ", ");
+		}
 	}
 
 	private List<Integer> findSubstring(String s, String[] words) {
@@ -27,23 +32,25 @@ public class SubstringWithConcatenationOfWords_Leetcode30 {
 
 		Map<String, Integer> currMap = new HashMap<String, Integer>();
 		int count_words = 0;
+		String kstring = null, temp = null;
 		for (int i = 0; i < word_length; i++) {
-			for (int left = i, right = i; right + word_length < s.length(); right += word_length) {
-				String kstring = s.substring(right, right + word_length);
+			for (int left = i, right = i; right + word_length <= s.length(); right += word_length) {
+				kstring = s.substring(right, right + word_length);
 				if (word_count.containsKey(kstring)) {
 
 					if (currMap.containsKey(kstring))
 						currMap.put(kstring, currMap.get(kstring) + 1);
 					else
 						currMap.put(kstring, 1);
-					count_words++;
-					String left_kstring = s.substring(left, left + word_length);
-					while (currMap.get(left_kstring) > word_count
-							.get(left_kstring)) {
-						currMap.put(left_kstring, currMap.get(left_kstring) - 1);
-						count_words--;
+					if (currMap.get(kstring) <= word_count.get(kstring))
+						count_words++;
+
+					while (currMap.get(kstring) > word_count.get(kstring)) {
+						temp = s.substring(left, left + word_length);
+						currMap.put(temp, currMap.get(temp) - 1);
 						left += word_length;
-						left_kstring = s.substring(left, left + word_length);
+						if (currMap.get(temp) < word_count.get(temp))
+							count_words--;
 					}
 
 					// This is the valid substring.
