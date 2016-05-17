@@ -8,7 +8,7 @@ package leetcode.questions.basic;
  * 
  */
 
-public class CountRangeSum_mergesort_Leetcode327 {
+public class Leetcode327_CountRangeSum_mergesort {
 
 	public static void main(String[] args) {
 
