@@ -1,12 +1,19 @@
 package leetcode.question.better;
 
+/**
+ * https://leetcode.com/problems/create-maximum-number/
+ * 
+ * @author Siva Kumar Edupuganti
+ * @email sivaiitroracle9@gmail.com
+ *
+ */
 public class Leetcode321_CreateMaxNumber {
 
 	public static void main(String[] args) {
 		Leetcode321_CreateMaxNumber lc = new Leetcode321_CreateMaxNumber();
-		int[] nums1 = { 6, 7 };
-		int[] nums2 = { 6, 0, 4 };
-		int k = 5;
+		int[] nums1 = { 3, 9 };
+		int[] nums2 = { 8, 9 };
+		int k = 3;
 		int[] result = lc.maxNumber(nums1, nums2, k);
 		for (int i = 0; i < result.length; i++) {
 			System.out.print(result[i] + ", ");
@@ -52,9 +59,32 @@ public class Leetcode321_CreateMaxNumber {
 
 		int i = 0, r1 = 0, r2 = 0;
 		while (i < result.length && r1 < res1.length && r2 < res2.length) {
+			boolean take_from_res1 = false;
 			if (res1[r1] == res2[r2]) {
-				//TODO
+				// TODO
+				int rr1 = r1 + 1, rr2 = r2 + 1;
+				while (rr1 < res1.length && rr2 < res2.length) {
+					if (res1[rr1] == res2[rr2]) {
+						rr1++;
+						rr2++;
+						continue;
+					}
+
+					if (res1[rr1] > res2[rr2]) {
+						take_from_res1 = true;
+					}
+					break;
+				}
+
+				if (rr2 == res2.length && rr1 < res1.length) {
+					take_from_res1 = true;
+				}
+
 			} else if (res1[r1] > res2[r2]) {
+				take_from_res1 = true;
+			}
+
+			if (take_from_res1) {
 				result[i++] = res1[r1++];
 			} else {
 				result[i++] = res2[r2++];
