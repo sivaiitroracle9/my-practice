@@ -3,7 +3,7 @@ package leetcode.company.amazon;
 import java.util.HashMap;
 import java.util.Map;
 
-public class TwoSum {
+public class L001_TwoSum {
 
 	public static void main(String[] args) {
 

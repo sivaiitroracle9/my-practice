@@ -2,7 +2,7 @@ package leetcode.company.amazon;
 
 import java.util.Stack;
 
-public class ValidParenthesis {
+public class L020_ValidParenthesis {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub

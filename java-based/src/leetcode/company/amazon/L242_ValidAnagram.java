@@ -3,7 +3,7 @@ package leetcode.company.amazon;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ValidAnagram {
+public class L242_ValidAnagram {
 
 	public static void main(String[] args){
 		System.out.println(isAnagram("anagram", "nagaram"));

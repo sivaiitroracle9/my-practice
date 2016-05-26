@@ -2,13 +2,13 @@ package leetcode.company.amazon;
 
 import java.util.Stack;
 
-public class MinStack {
+public class L155_MinStack {
 
 	Stack<Integer> normal_stack;
 	Stack<Integer> min_stack;
 
 	/** initialize your data structure here. */
-	public MinStack() {
+	public L155_MinStack() {
 		normal_stack = new Stack<Integer>();
 		min_stack = new Stack<Integer>();
 	}

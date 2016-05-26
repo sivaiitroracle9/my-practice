@@ -1,6 +1,6 @@
 package leetcode.company.amazon;
 
-public class IntersectionOfTwoLinkedLists {
+public class L160_IntersectionOfTwoLinkedLists {
 
 	public class ListNode {
 		int val;

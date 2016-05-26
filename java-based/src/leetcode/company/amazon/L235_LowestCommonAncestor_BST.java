@@ -1,6 +1,6 @@
 package leetcode.company.amazon;
 
-public class LowestCommonAncestor_BST {
+public class L235_LowestCommonAncestor_BST {
 
 	public class TreeNode {
 		int val;

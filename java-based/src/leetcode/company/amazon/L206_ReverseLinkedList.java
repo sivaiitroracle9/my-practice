@@ -1,6 +1,6 @@
 package leetcode.company.amazon;
 
-public class ReverseLinkedList {
+public class L206_ReverseLinkedList {
 
 	public static void main(String[] args) {
 

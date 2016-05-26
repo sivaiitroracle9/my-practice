@@ -1,6 +1,6 @@
 package leetcode.company.amazon;
 
-public class MergeTwoSortedLists {
+public class L021_MergeTwoSortedLists {
 
 	public class ListNode {
 		int val;

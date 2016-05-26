@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Queue;
 import java.util.Stack;
 
-public class BinaryTreeLevelOrder {
+public class L102_BinaryTreeLevelOrder {
 
 	public class TreeNode {
 		int val;

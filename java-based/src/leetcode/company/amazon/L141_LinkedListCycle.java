@@ -1,6 +1,6 @@
 package leetcode.company.amazon;
 
-public class LinkedListCycle {
+public class L141_LinkedListCycle {
 
 	public class ListNode {
 		int val;
