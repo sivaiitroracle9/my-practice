@@ -1,5 +1,5 @@
 package leetcode.company.amazon;
 
-public class L48_RotateImage {
+public class L048_RotateImage {
 
 }
