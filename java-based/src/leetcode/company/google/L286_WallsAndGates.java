@@ -103,7 +103,8 @@ public class L286_WallsAndGates {
 			for (int j = 0; j < n; j++) {
 				if (rooms[i][j] == INF) {
 					int room = i * n + j + 1;
-					if(distancemap.containsKey(room))rooms[i][j] = distancemap.get(room);
+					if(distancemap.containsKey(room))
+						rooms[i][j] = distancemap.get(room);
 				}
 			}
 		}
