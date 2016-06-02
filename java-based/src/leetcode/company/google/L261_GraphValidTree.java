@@ -10,7 +10,7 @@ public class L261_GraphValidTree {
 	public static void main(String[] args) {
 		L261_GraphValidTree lc = new L261_GraphValidTree();
 		int n = 5;
-		int[][] edges = { { 0, 1 }, { 0, 2 }, { 0, 3 }, {1, 4} };
+		int[][] edges = { { 0, 1 }, { 1, 2 }, { 2, 3 }, { 1, 3 }, { 1, 4 } };
 		System.out.println(lc.validTree(n, edges));
 	}
 
@@ -31,11 +31,10 @@ public class L261_GraphValidTree {
 			edgesmap.get(edge[1]).add(edge[0]);
 		}
 
-		int[] travesedpath = new int[n];
-		for(int i=0; i<n; i++) travesedpath[i] = -1;
+		boolean[] travesedpath = new boolean[n];
 		boolean[] visitednodes = new boolean[n];
 
-		if (isCycle(edgesmap, travesedpath, visitednodes, 0))
+		if (isCycle(edgesmap, travesedpath, visitednodes, 0, -1))
 			return false;
 		for (int i = 0; i < n; i++) {
 			if (!visitednodes[i])
@@ -45,5 +44,25 @@ public class L261_GraphValidTree {
 		return true;
 	}
 
+	public boolean isCycle(Map<Integer, Set<Integer>> edgesmap,
+			boolean[] travesedpath, boolean[] visitednodes, int start,
+			int parent) {
+		visitednodes[start] = true;
+		if (edgesmap.containsKey(start)) {
+			travesedpath[start] = true;
+			for (int child : edgesmap.get(start)) {
+				if (child == parent)
+					continue;
+				if (!visitednodes[child]
+						&& isCycle(edgesmap, travesedpath, visitednodes, child,
+								start))
+					return true;
+				else if (travesedpath[child])
+					return true;
+			}
+			travesedpath[start] = false;
+		}
 
+		return false;
+	}
 }
