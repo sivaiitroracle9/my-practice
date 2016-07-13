@@ -3,7 +3,7 @@
  * http://www.practice.geeksforgeeks.org/problem-page.php?pid=475
  */
 
-package geeksforgeeks.company.amazon;
+package gfg.comp.amz;
 
 import java.util.Scanner;
 

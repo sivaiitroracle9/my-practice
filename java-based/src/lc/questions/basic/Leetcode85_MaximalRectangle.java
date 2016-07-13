@@ -1,4 +1,4 @@
-package leetcode.questions.basic;
+package lc.questions.basic;
 
 /**
  * Time complexity O(m*n*m) Space complexity O(m*n)

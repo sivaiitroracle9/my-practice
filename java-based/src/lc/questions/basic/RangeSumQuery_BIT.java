@@ -1,4 +1,4 @@
-package leetcode.questions.basic;
+package lc.questions.basic;
 /**
  * 
  * https://leetcode.com/problems/range-sum-query-mutable/

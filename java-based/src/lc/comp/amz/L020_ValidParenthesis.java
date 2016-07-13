@@ -1,4 +1,4 @@
-package leetcode.company.amazon;
+package lc.comp.amz;
 
 import java.util.Stack;
 

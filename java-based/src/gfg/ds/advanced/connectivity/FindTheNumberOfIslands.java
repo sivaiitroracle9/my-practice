@@ -1,4 +1,4 @@
-package geeksforgeeks.datastructures.advanced.connectivity;
+package gfg.ds.advanced.connectivity;
 
 import java.util.Scanner;
 

@@ -6,7 +6,7 @@
  * Output:
  * Print number of possible ways.
  */
-package geeksforgeeks.company.amazon;
+package gfg.comp.amz;
 
 import java.util.ArrayList;
 import java.util.Arrays;

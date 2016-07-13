@@ -1,4 +1,4 @@
-package leetcode.company.amazon;
+package lc.comp.amz;
 
 import java.util.LinkedList;
 import java.util.List;

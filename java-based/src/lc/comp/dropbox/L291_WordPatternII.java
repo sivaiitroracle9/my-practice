@@ -1,4 +1,4 @@
-package leetcode.company.dropbox;
+package lc.comp.dropbox;
 
 import java.util.HashMap;
 import java.util.Map;

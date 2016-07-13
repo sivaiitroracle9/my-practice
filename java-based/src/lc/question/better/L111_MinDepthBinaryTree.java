@@ -1,4 +1,4 @@
-package leetcode.question.better;
+package lc.question.better;
 
 import java.util.LinkedList;
 import java.util.Queue;

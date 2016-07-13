@@ -1,4 +1,4 @@
-package leetcode.questions.basic;
+package lc.questions.basic;
 
 public class DungeonGame {
 

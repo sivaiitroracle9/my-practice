@@ -1,4 +1,4 @@
-package leetcode.company.amazon;
+package lc.comp.amz;
 /**
  * https://leetcode.com/problems/best-time-to-buy-and-sell-stock/
  * 

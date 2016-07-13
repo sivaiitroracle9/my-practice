@@ -1,4 +1,4 @@
-package geeksforgeeks.sorting;
+package gfg.sorting;
 
 import java.util.Scanner;
 

@@ -1,4 +1,4 @@
-package geeksforgeeks.matrix;
+package gfg.matrix;
 
 public class MinPointsToReach {
 

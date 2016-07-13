@@ -1,4 +1,4 @@
-package leetcode.question.better;
+package lc.question.better;
 
 /**
  * https://leetcode.com/problems/create-maximum-number/

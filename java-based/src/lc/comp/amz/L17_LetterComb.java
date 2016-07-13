@@ -1,4 +1,4 @@
-package leetcode.company.amazon;
+package lc.comp.amz;
 
 /**
  * https://leetcode.com/problems/letter-combinations-of-a-phone-number/

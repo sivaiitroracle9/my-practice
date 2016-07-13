@@ -1,4 +1,4 @@
-package leetcode.divideconquer;
+package lc.divideconquer;
 
 import java.util.Scanner;
 

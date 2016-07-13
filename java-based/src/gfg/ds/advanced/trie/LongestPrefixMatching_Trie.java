@@ -1,6 +1,6 @@
-package geeksforgeeks.datastructures.advanced.trie;
+package gfg.ds.advanced.trie;
 
-import geeksforgeeks.datastructures.advanced.trie.Trie.TrieNode;
+import gfg.ds.advanced.trie.Trie.TrieNode;
 
 /**
  * 

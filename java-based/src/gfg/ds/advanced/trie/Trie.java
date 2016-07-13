@@ -1,4 +1,4 @@
-package geeksforgeeks.datastructures.advanced.trie;
+package gfg.ds.advanced.trie;
 
 import java.util.HashMap;
 import java.util.Map;

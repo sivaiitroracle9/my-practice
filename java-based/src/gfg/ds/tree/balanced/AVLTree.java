@@ -1,4 +1,4 @@
-package geeksforgeeks.datastructures.tree.balanced;
+package gfg.ds.tree.balanced;
 
 public class AVLTree {
 

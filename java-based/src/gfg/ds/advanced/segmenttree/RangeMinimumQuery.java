@@ -1,4 +1,4 @@
-package geeksforgeeks.datastructures.advanced.segmenttree;
+package gfg.ds.advanced.segmenttree;
 
 import java.util.Scanner;
 

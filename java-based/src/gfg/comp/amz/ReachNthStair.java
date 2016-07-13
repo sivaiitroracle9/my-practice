@@ -2,7 +2,7 @@
  * Count ways to reach the n’th stair.
  * http://www.practice.geeksforgeeks.org/problem-page.php?pid=155
  */
-package geeksforgeeks.company.amazon;
+package gfg.comp.amz;
 
 import java.util.Scanner;
 

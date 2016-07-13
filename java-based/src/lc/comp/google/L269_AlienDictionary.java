@@ -1,4 +1,4 @@
-package leetcode.company.google;
+package lc.comp.google;
 
 import java.util.HashSet;
 import java.util.Set;

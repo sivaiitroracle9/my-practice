@@ -1,4 +1,4 @@
-package leetcode.company.google;
+package lc.comp.google;
 
 public class L308_RangeSumQuery2D_Mutable {
 

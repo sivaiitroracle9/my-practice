@@ -1,4 +1,4 @@
-package leetcode.question.better;
+package lc.question.better;
 
 public class L121_BuySellStockI {
 

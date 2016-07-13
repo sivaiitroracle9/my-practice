@@ -2,7 +2,7 @@
  * Remove minimum elements.
  * http://www.practice.geeksforgeeks.org/problem-page.php?pid=445
  */
-package geeksforgeeks.company.amazon;
+package gfg.comp.amz;
 
 public class RemoveMinElements {
 	public static void main(String[] args) {

@@ -2,7 +2,7 @@
  * Rotate a 2D array without using extra space.
  * http://www.practice.geeksforgeeks.org/problem-page.php?pid=497
  */
-package geeksforgeeks.company.amazon;
+package gfg.comp.amz;
 
 import java.util.Scanner;
 

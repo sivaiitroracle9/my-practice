@@ -1,4 +1,4 @@
-package geeksforgeeks.datastructures.heap;
+package gfg.ds.heap;
 
 public class MedianOfOnlineStream {
 

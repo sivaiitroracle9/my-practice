@@ -1,4 +1,4 @@
-package leetcode.questions.basic;
+package lc.questions.basic;
 /**
  * Time Complexity : O(V+E)
  * Space Conplexity: O(V)

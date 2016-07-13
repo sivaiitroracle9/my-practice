@@ -1,4 +1,4 @@
-package leetcode.company.amazon;
+package lc.comp.amz;
 
 public class L240_Search2DMatrixII {
 	public boolean searchMatrix(int[][] matrix, int target) {

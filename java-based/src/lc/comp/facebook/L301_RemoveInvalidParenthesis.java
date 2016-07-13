@@ -1,4 +1,4 @@
-package leetcode.company.facebook;
+package lc.comp.facebook;
 
 import java.util.List;
 
